@@ -12,13 +12,15 @@ from nltk.corpus import stopwords
 def get_genius_url(title, artist):
     genius = 'https://api.genius.com/search'
     data = {'q': title + ' ' + artist}
-    headers = {'Authorization': 'Bearer ' + 'O06q2KIQgwgP6G7nx9kUjnoOyM2hpVumE8jtFiJh8kD-CtW64l51mUeWeZeYf4LV'}
+    headers = {'Authorization': 'Bearer ' + 'O-txEXzcRqwinpQX3P5AMzLRka8sq1HwBfZFBlSGCdaDZa14P4uXyeSKbgTCvARM'}
     response = requests.get(genius, data=data, headers=headers)
     song_url = ''
+    print(title,artist)
     for hit in response.json()['response']['hits']:
         if record['artist'] == hit['result']['primary_artist']['name']:
+            print('found match')
             song_url = hit['result']['url']
-            print(hit['result']['primary_artist']['name'])
+            print(song_url)
             break
     return song_url
 
@@ -35,16 +37,14 @@ def lyrical_analysis(lyrics):
 
 
 def remove_stopwords(lyrics):
-    lines = lyrics.split('\n')
+    lines = re.split(r'\n',lyrics)
     filtered = ""
     for line in lines:
-        line = re.sub(r'[\(\[].*?[\)\]]', ' ', line)
-        line = re.sub(r'\n', ' ', line)
-        # line = re.sub(r'[\\+u.*)]', ' ', line)
+        line = re.sub(r'[\(\[].*?[\)\]]|\n|\u2005', ' ', line)
         filtered += line
-    lyrics_words = filtered.split(' ')
+    lyrics_words = re.split(r',| |_|-|!', filtered)
     stops = stopwords.words('english')
-    removed_stopwords = [re.sub(r'[\\+u.*]', '', word) for word in lyrics_words if word not in stops and word != '']
+    removed_stopwords = [word for word in lyrics_words if word not in stops and word != '']
     print(removed_stopwords)
 
 
@@ -60,6 +60,7 @@ tracks = {}
 
 # get top 50 songs in 2020
 track_results = sp.search(q='year:2020', type='track', limit=50, offset=1)
+
 # populate tracks dictionary with track ids as keys, track names as values
 for i, t in enumerate(track_results['tracks']['items']):
     tracks[t['id']] = [t['name'], t['artists'][0]['name']]
@@ -74,5 +75,3 @@ for record in audio_data:
     if url != '':
         lyrics = get_genius_lyrics_from_url(url)
         remove_stopwords(lyrics)
-
-print(len(audio_data))
