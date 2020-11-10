@@ -1,12 +1,15 @@
 # Music Mood Classification
 
+- [ ] please follow our template
+
 Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/master/project/project.md)
 
 {{% pageinfo %}}
 
 {{< table_of_contents >}}
 
-{{% pageinfo %}}
+{{% /pageinfo %}}
+
 ## Introduction
 The overall mood of a musical piece is generally very difficult to decipher due to the highly subjective nature of music. One person might think a song is energetic and happy, while another may think it is quite sad. This can be attributed to varying interpretations of tone and lyrics in song between different listeners. In this project we study both the audio and lyrical patterns of a song through machine learning and natural language processing (NLP) tools in order to create a 'mood sort algorithm'.
 
