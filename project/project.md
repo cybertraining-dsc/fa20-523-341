@@ -11,8 +11,7 @@ Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/),
 {{% pageinfo %}}
 
 ## Abstract
-
-Missing
+Music analysis on an individual level is incredibly subjective. A particular song can leave polarizing impressions on the emotions of its listener. One person may find a sense of calm in a piece, while another feels energy. In this study we examine the audio and lyrical features of popular songs in order to create an algorithm to recommend songs to a user based on their mood. We take advantage of the audio data provided by Spotify for each song in their massive library, as well as lyrical data from popular music news and lyrics site, Genius. 
 
 {{< table_of_contents >}}
 
@@ -55,7 +54,9 @@ For the lyrical analysis portion of this project, we use Genius's API to pull ly
  - generate ability to generate list of songs relevant to input mood
     - user enters mood on scale from 0-1, receives a list of songs
  
+## Analysis
 
+## Conclusion
 
 ## References
 [^1]: [Improving Mood Classification in Music Digital Libraries by Combining Lyrics and Audio](https://dl.acm.org/doi/10.1145/1816123.1816146)
