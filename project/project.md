@@ -42,7 +42,18 @@ For the audio content analysis portion of this project, we use Spotify's Web API
 For the lyrical analysis portion of this project, we use Genius's API to pull lyrics information for a song. Genius is a website which contains lyrics to several popular songs. We will then use WordNet, which is large collection of English lexicon, used to classify words and phrases with features such as valence, arousal, dominance.
 
 
-## Project Goals
+## Project Goals 
+ - make dataset of collected song information from spotify and genius api 
+ - Analyze audio and lyrical data of top songs on spotify
+      - graphs and statistics of data fields like valence, danceability, word count, etc
+      - note current trends in song types
+ - determine a song's overall positivity - postive / negative lyrics
+      - potential simple rating system : (positive_words - negative_words / total_words ) 
+      - **Note: words can be neutral**
+ - Make sense of emotions portrayed by the songs based off of audio/lyrical data
+ - generate ability to generate list of songs relevant to input mood
+    - user enters mood on scale from 0-1, receives a list of songs
+ 
 
 
 ## References
