@@ -11,16 +11,15 @@ Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/),
 
 {{% pageinfo %}}
 
-
 ## Abstract
 
 Music analysis on an individual level is incredibly subjective. A particular song can leave polarizing impressions on the emotions of its listener. One person may find a sense of calm in a piece, while another feels energy. In this study we examine the audio and lyrical features of popular songs in order to create an algorithm to recommend songs to a user based on their mood. We take advantage of the audio data provided by Spotify for each song in their massive library, as well as lyrical data from popular music news and lyrics site, Genius. 
 
+Contents
+
 {{< table_of_contents >}}
 
-
 {{% /pageinfo %}}
-
 
 **Keywords:** music, mood classification, audio, audio content analysis, lyrics, lyrical analysis, big data, spotify, emotion
 
