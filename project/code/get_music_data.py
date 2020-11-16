@@ -92,7 +92,7 @@ def get_track_data(offset):
     tracks = {}
 
     # get top 50 songs in 2020
-    track_results = sp.search(q='year:2020', type='track', limit=50, offset=offset)
+    track_results = sp.search(q='year:2018', type='track', limit=50, offset=offset)
 
     # populate tracks dictionary with track ids as keys, track names as values
     for i, t in enumerate(track_results['tracks']['items']):
@@ -102,27 +102,29 @@ def get_track_data(offset):
     audio_data = sp.audio_features(tracks.keys())
 
     for record in audio_data:
-        print(str(count) + '/500 songs looked up')
-        print(tracks[record['id']][0] + " | " + tracks[record['id']][1])
-        record['name'] = tracks[record['id']][0]
-        record['artist'] = tracks[record['id']][1]
-        url = get_genius_url(record['name'], record['artist'])
-        if url != '':
-            lyrics = get_genius_lyrics_from_url(url)
-            sentiment_data = lyrical_analysis(lyrics)
-            record['num_positive'] = sentiment_data['num_positive']
-            record['num_negative'] = sentiment_data['num_negative']
-            record['num_neutral'] = sentiment_data['num_neutral']
-            record['positivity'] = sentiment_data['positivity']
-            record['negativity'] = sentiment_data['negativity']
-            record['neutrality'] = sentiment_data['neutrality']
-            lyrics = remove_stopwords(lyrics)
-            record['word_count'] = len(lyrics)
-            record['unique_word_count'] = count_unique_words(lyrics)
-        else:
+        try:
+            print(str(count) + '/10000 songs looked up')
+            print(tracks[record['id']][0] + " | " + tracks[record['id']][1])
+            record['name'] = tracks[record['id']][0]
+            record['artist'] = tracks[record['id']][1]
+            url = get_genius_url(record['name'], record['artist'])
+            if url != '':
+                lyrics = get_genius_lyrics_from_url(url)
+                sentiment_data = lyrical_analysis(lyrics)
+                record['num_positive'] = sentiment_data['num_positive']
+                record['num_negative'] = sentiment_data['num_negative']
+                record['num_neutral'] = sentiment_data['num_neutral']
+                record['positivity'] = sentiment_data['positivity']
+                record['negativity'] = sentiment_data['negativity']
+                record['neutrality'] = sentiment_data['neutrality']
+                lyrics = remove_stopwords(lyrics)
+                record['word_count'] = len(lyrics)
+                record['unique_word_count'] = count_unique_words(lyrics)
+            else:
+                record['word_count'] = 0
+            count += 1
+        except Exception as e:
             record['word_count'] = 0
-        count +=1
-
     return [track for track in audio_data if track['word_count'] != 0]
 
 
@@ -135,12 +137,12 @@ sp = spotipy.Spotify(client_credentials_manager=credentialsManager)
 
 data_to_save = []
 
-for num in range(1,502,50):
+for num in range(0, 1998, 50):
     for track_data in get_track_data(num):
         data_to_save.append(track_data)
 fields = data_to_save[0].keys()
-with open('./data/tracks2020.csv', 'w') as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=fields)
+with open('./data/tracks2018.csv', 'w') as data_file:
+    writer = csv.DictWriter(data_file, fieldnames=fields)
     writer.writeheader()
     writer.writerows(data_to_save)
 
