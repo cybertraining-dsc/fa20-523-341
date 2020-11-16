@@ -5,6 +5,7 @@
 - [ ] please follow our template
 - [ ] Abstract and Keywords are missing. 
 - [ ] Analysis and conclusion sections are missing. Please add them. 
+- [ ] Refernces do not follwo IEEE format
 
 Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/master/project/project.md)
 
@@ -69,7 +70,7 @@ From our data sources, we collected data for roughly 10000 songs released in 202
 ## 6. Conclusion
 
 
-## References
+## 7. References
 
 [^1]: [Improving Mood Classification in Music Digital Libraries by Combining Lyrics and Audio](https://dl.acm.org/doi/10.1145/1816123.1816146)
 
