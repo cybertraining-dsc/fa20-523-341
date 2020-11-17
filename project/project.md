@@ -7,7 +7,7 @@
 - [ ] Analysis and conclusion sections are missing. Please add them. 
 - [ ] Refernces do not follwo IEEE format
 
-Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/master/project/project.md)
+Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/main/project/project.md)
 
 
 {{% pageinfo %}}
