@@ -2,18 +2,19 @@ import csv
 import os
 import re
 
-import spotipy
-import requests
-from bs4 import BeautifulSoup
-from spotipy.oauth2 import SpotifyClientCredentials
-import nltk
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from nltk.corpus import stopwords
+import spotipy  # library for interacting with spotify api
+from spotipy.oauth2 import SpotifyClientCredentials  # handles oath sign in with spotify api credentials
+import requests  # make http requests
+from bs4 import BeautifulSoup  # read page content from when opening genius urls
+import nltk  # nlp library
+from nltk.sentiment.vader import SentimentIntensityAnalyzer  # module for sentiment analysis
+from nltk.corpus import stopwords  # used to remove common words like 'the, at, and' from lyrics
 
 nltk.download('vader_lexicon')
 nltk.download('stopwords')
 
 
+# search for a song on genius with song title and artist name, returns url to lyrics page for the song
 def get_genius_url(title, artist):
     genius = 'https://api.genius.com/search'
     data = {'q': title + ' ' + artist}
@@ -28,6 +29,7 @@ def get_genius_url(title, artist):
     return song_url
 
 
+# parse lyrics page for lyrics, returns lyrics
 def get_genius_lyrics_from_url(genius_url):
     lyrics = requests.get(genius_url)
     html = BeautifulSoup(lyrics.text, 'html.parser')
@@ -35,6 +37,7 @@ def get_genius_lyrics_from_url(genius_url):
     return genius_lyrics
 
 
+# cleans up song lyrics, removing empty lines, section headings, and any data that is not lyrical content
 def lyrical_analysis(song_lyrics):
     lines = re.split(r'\n', song_lyrics)
     filtered = ""
@@ -43,10 +46,16 @@ def lyrical_analysis(song_lyrics):
         filtered += line + '\n'
     cleaned_lyrics = os.linesep.join([line for line in filtered.splitlines() if line])
     sia = SentimentIntensityAnalyzer()
+
+    # object to return with sentiment data
     senti_data = {}
+
+    # count for lines that are mostly positive, mostly negative, or mostly neutral
     positive = 0
     negative = 0
     neutral = 0
+
+    # iterate line by line through lyrics, read line scores, judge positivity and update the respective count
     for line in cleaned_lyrics.split('\n'):
         line_sentiment = sia.polarity_scores(line)
         score = line_sentiment['compound']
@@ -56,6 +65,8 @@ def lyrical_analysis(song_lyrics):
             negative += 1
         else:
             neutral += 1
+
+    # small calculations to populate senti_data
     total = positive + neutral + negative
     senti_data['num_positive'] = positive
     senti_data['num_negative'] = negative
@@ -66,6 +77,7 @@ def lyrical_analysis(song_lyrics):
     return senti_data
 
 
+# count the number of unique words from tokanized array
 def count_unique_words(array_of_words):
     unique_words = []
     for word in array_of_words:
@@ -74,6 +86,7 @@ def count_unique_words(array_of_words):
     return len(unique_words)
 
 
+# remove common stopwords from lyrics, tokenize lyrics
 def remove_stopwords(song_lyrics):
     lines = re.split(r'\n', song_lyrics)
     filtered = ""
@@ -101,13 +114,20 @@ def get_track_data(offset):
     # get audio data for each track in tracks
     audio_data = sp.audio_features(tracks.keys())
 
+    # get lyrical data from for each song
     for record in audio_data:
         try:
             print(str(count) + '/1998 songs looked up')
             print(tracks[record['id']][0] + " | " + tracks[record['id']][1])
+
+            # store song name and artist name in audio_data
             record['name'] = tracks[record['id']][0]
             record['artist'] = tracks[record['id']][1]
+
+            # fetch url to lyrics page for song
             url = get_genius_url(record['name'], record['artist'])
+
+            # if url exists, perform lyrical analyses. add lyrical information to the audio data already contained in audio_data
             if url != '':
                 lyrics = get_genius_lyrics_from_url(url)
                 sentiment_data = lyrical_analysis(lyrics)
@@ -125,6 +145,7 @@ def get_track_data(offset):
             count += 1
         except Exception as e:
             print(record)
+    # return array of song data of songs that were successfully analyzed
     return [track for track in audio_data if (hasattr(track, 'word_count') and track['word_count'] != 0)]
 
 
