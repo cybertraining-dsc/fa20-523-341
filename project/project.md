@@ -2,13 +2,7 @@
 
 [![Check Report](https://github.com/cybertraining-dsc/fa20-523-341/workflows/Check%20Report/badge.svg)](https://github.com/cybertraining-dsc/fa20-523-341/actions)
 
-- [ ] please follow our template
-- [ ] Abstract and Keywords are missing. 
-- [ ] Analysis and conclusion sections are missing. Please add them. 
-- [ ] Refernces do not follwo IEEE format
-
-Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/main/project/project.md)
-
+Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/master/project/project.md)
 
 {{% pageinfo %}}
 
@@ -65,12 +59,15 @@ For the lyrical analysis portion of this project, we use Genius's API to pull ly
  
 ## 5. Analysis
 
-From our data sources, we collected data for roughly 10000 songs released in 2020
+From our data sources, we collected data for roughly 8000 songs released between 2017 and 2020
 
 ## 6. Conclusion
 
+There are several aspects that could be improved upon in future iterations of our study. In this project we only worked with songs released after 2017, but obviously, people would still enjoy listening to songs from previous years. The Spotiy API contains audio features data for every song in its library, so it would be worth collecting that data on every song for usage in the generation of song recommendations. Secondly, our data set excluded songs on Spotify, whose lyrics could not be found easily on Genius.com. We should have handled these cases by attempting to find the lyrics from other popular websites which store music lyrics. And lastly, we worked with a very small dataset relative to the total amount of songs that exist, or that are available by Spotify.
 
-## 7. References
+This section will be expanded upon after completion of analyses
+
+## References
 
 [^1]: [Improving Mood Classification in Music Digital Libraries by Combining Lyrics and Audio](https://dl.acm.org/doi/10.1145/1816123.1816146)
 

@@ -92,7 +92,7 @@ def get_track_data(offset):
     tracks = {}
 
     # get top 50 songs in 2020
-    track_results = sp.search(q='year:2018', type='track', limit=50, offset=offset)
+    track_results = sp.search(q='year:2016', type='track', limit=50, offset=offset)
 
     # populate tracks dictionary with track ids as keys, track names as values
     for i, t in enumerate(track_results['tracks']['items']):
@@ -103,7 +103,7 @@ def get_track_data(offset):
 
     for record in audio_data:
         try:
-            print(str(count) + '/10000 songs looked up')
+            print(str(count) + '/1998 songs looked up')
             print(tracks[record['id']][0] + " | " + tracks[record['id']][1])
             record['name'] = tracks[record['id']][0]
             record['artist'] = tracks[record['id']][1]
@@ -124,8 +124,8 @@ def get_track_data(offset):
                 record['word_count'] = 0
             count += 1
         except Exception as e:
-            record['word_count'] = 0
-    return [track for track in audio_data if track['word_count'] != 0]
+            print(record)
+    return [track for track in audio_data if (hasattr(track, 'word_count') and track['word_count'] != 0)]
 
 
 # API Tokens
@@ -141,7 +141,7 @@ for num in range(0, 1998, 50):
     for track_data in get_track_data(num):
         data_to_save.append(track_data)
 fields = data_to_save[0].keys()
-with open('./data/tracks2018.csv', 'w') as data_file:
+with open('./data/tracks2016.csv', 'w') as data_file:
     writer = csv.DictWriter(data_file, fieldnames=fields)
     writer.writeheader()
     writer.writerows(data_to_save)
