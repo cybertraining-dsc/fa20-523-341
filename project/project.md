@@ -24,9 +24,9 @@ The overall mood of a musical piece is generally very difficult to decipher due 
 
 ## 2. Related Work
 
-Previous studies take three different ways in classifying the mood of a song according to various mood models by analyzing audio, analyzing lyrics, and analyzing lyrics and audio. Most of these studies have been successful in their goals but have uses a limited collection of songs/words for their analysis[^1][^2]. Perhaps obviously, the best results come when combining audio and lyrics.
+Previous studies take three different ways in classifying the mood of a song according to various mood models by analyzing audio, analyzing lyrics, and analyzing lyrics and audio. Most of these studies have been successful in their goals but have uses a limited collection of songs/words for their analysis [^1][^2]. Perhaps obviously, the best results come when combining audio and lyrics.
 
-When researching existing work, we found two applications that approach music recommendations based on mood, one is called 'moooodify', a free web application developed by an independent music enthusiast, Siddharth Ahuja[^4]. Another website, Organize Your Music, aims to organize a Spotify user's music library based on mood, genre, popularity, style, and other categories [^6]. However, both of these applications do not seem to take into account any lyrical analysis of a song.
+When researching existing work, we found two applications that approach music recommendations based on mood, one is called 'moooodify', a free web application developed by an independent music enthusiast, Siddharth Ahuja [^4]. Another website, Organize Your Music, aims to organize a Spotify user's music library based on mood, genre, popularity, style, and other categories [^6]. However, both of these applications do not seem to take into account any lyrical analysis of a song.
 
 Lyrics of a song can be used to learn a lot about music from lexical pattern analysis to gender, genre, and mood analyses. For example, in an individual study a researcher found that female artists tend to mention girls, women, and friends a lot, while male artists sing about late Saturday Nights, play and love [^3]. Another popular project, SongSim, used repetition to visualize the parts of a song [^5]. Findings such as these can be used to uncover the gender of an artist based on their lyrics. Similarly, by use of NLP tools, lyrical text can be analyzed to elicit the mood and emotion of a song.
 
@@ -34,7 +34,7 @@ A simple weighting is given by a study from the University of Illinois to catego
 
 ```phybrid = \alpha plyrics + (1 - \alpha )paudio```
 
-where a is the probability weight given by the lyrical classifier[^1].
+where a is the probability weight given by the lyrical classifier [^1].
 
 
 ## 3. Datasets
@@ -82,10 +82,18 @@ From our data sources, we collected data for roughly 8000 songs released between
 **Figure 1:** Snapshot of dataset containing tracks released in 2020
 
 ### Key Terms
-The following terms defined are important in our analyses. In our data set each term contains a value between 0 and 1, indicating least to most. For example, looking at the first two rows in Figure 1, we can see that the track by the artist, Pop Smoke, has a greater speechiness score, indicating a greater percentage of that song contains spoken word. 
+The following terms defined are important in our analyses. In our data set most terms contain are represented by a  value between 0 and 1, indicating least to most. For example, looking at the first two rows in Figure 1, we can see that the track by the artist, Pop Smoke, has a greater speechiness score, indicating a greater percentage of that song contains spoken word. 
  
- - Danceability: uses several musical elements (tempo, stability, beat strength, regularity) to determine how suitable a given track is for dancing
-
+- Danceability: uses several musical elements (tempo, stability, beat strength, regularity) to determine how suitable a given track is for dancing
+- Energy: 
+- Loudness: 
+- Mode: 
+- Speechiness: 
+- Acousticness:
+- instrumentalness:
+- liveness:
+- valence:
+- tempo:
 
 ## 6. Conclusion
 
@@ -95,16 +103,16 @@ This section will be expanded upon after completion of analyses
 
 ## 7. References
 
-[^1]: [Improving Mood Classification in Music Digital Libraries by Combining Lyrics and Audio](https://dl.acm.org/doi/10.1145/1816123.1816146)
+[^1]: Hu, X., &amp; Downie, J. S. (2010). Improving mood classification in music digital libraries by combining lyrics and audio. Proceedings of the 10th Annual Joint Conference on Digital Libraries - JCDL '10. doi:10.1145/1816123.1816146
 
-[^2]: [Lyric Text Mining in Mood Classification](https://www.researchgate.net/publication/220723046_Lyric_Text_Mining_in_Music_Mood_Classification)
+[^2]: Kashyap, N., Choudhury, T., Chaudhary, D. K., &amp; Lal, R. (2016). Mood Based Classification of Music by Analyzing Lyrical Data Using Text Mining. 2016 International Conference on Micro-Electronics and Telecommunication Engineering (ICMETE). doi:10.1109/icmete.2016.65
 
-[^3]: [What Songs Tell Us About: Text Mining with Lyrics](https://towardsdatascience.com/what-songs-tell-us-about-text-mining-with-lyrics-ca80f98b3829)
+[^3]: Jeong, J. (2019, January 19). What Songs Tell Us About: Text Mining with Lyrics. Retrieved November 17, 2020, from https://towardsdatascience.com/what-songs-tell-us-about-text-mining-with-lyrics-ca80f98b3829
 
-[^4]: [Sort your music by any mood — Introducing moooodify](https://blog.usejournal.com/sort-your-music-by-any-mood-introducing-moooodify-41749e80faab)
+[^4]: Ahuja, S. (2019, September 25). Sort your music by any mood - Introducing moooodify. Retrieved November 17, 2020, from https://blog.usejournal.com/sort-your-music-by-any-mood-introducing-moooodify-41749e80faab
 
-[^5]: [SongSim](https://colinmorris.github.io/SongSim/#/)
+[^5]: Morris, C. (2016). SongSim. Retrieved November 17, 2020, from https://colinmorris.github.io/SongSim/
 
-[^6]: [Organize Your Music](http://organizeyourmusic.playlistmachinery.com/)
+[^6]: Lamere, P. (2016, August 6). Organize Your Music. Retrieved November 17, 2020, from http://organizeyourmusic.playlistmachinery.com/
 
-[^7] [Spotify Documentation] (https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/)
+[^7]: Get Audio Features for a Track. (2020). Retrieved November 17, 2020, from https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
