@@ -78,16 +78,16 @@ From our data sources, we collected data for roughly 8000 songs released between
 ### Key Terms
 The following terms defined are important in our analyses. In our data set most terms contain are represented by a  value between 0 and 1, indicating least to most. For example, looking at the first two rows in Figure 1, we can see that the track by the artist, Pop Smoke, has a greater speechiness score, indicating a greater percentage of that song contains spoken word. 
  
-- Danceability: uses several musical elements (tempo, stability, beat strength, regularity) to determine how suitable a given track is for dancing
-- Energy: 
-- Loudness: 
-- Mode: 
-- Speechiness: 
-- Acousticness:
-- instrumentalness:
-- liveness:
-- valence:
-- tempo:
+- **Danceability:** uses several musical elements (tempo, stability, beat strength, regularity) to determine how suitable a given track is for dancing
+- **Energy:** 
+- **Loudness:**
+- **Mode:** 
+- **Speechiness:** 
+- **Acousticness:**
+- **instrumentalness:**
+- **liveness:**
+- **valence:**
+- **tempo:**
 
 ## 6. Conclusion
 
