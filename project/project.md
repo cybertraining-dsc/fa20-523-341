@@ -36,6 +36,11 @@ A simple weighting is given by a study from the University of Illinois to catego
 
 ```phybrid = \alpha plyrics + (1 - \alpha )paudio```
 
+test by gregor:
+
+$$phybrid = \alpha plyrics + (1 - \alpha )audio $$
+
+
 where a is the probability weight given by the lyrical classifier [^1].
 
 
