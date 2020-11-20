@@ -50,29 +50,36 @@ For the lyrical analysis portion of this project, we use Genius's API to pull ly
 
  - make dataset of collected song information from spotify and genius api 
  - Analyze audio and lyrical data of top songs on spotify
-      - graphs and statistics of data fields like valence, danceability, word count, etc
-      - note current trends in song types
+   - graphs and statistics of data fields like valence, danceability, word count, etc
+   - note current trends in song types
  - determine a song's overall positivity - postive / negative lyrics
-      - potential simple rating system : (positive_words - negative_words / total_words ) 
-      - **Note: words can be neutral**
+   - potential simple rating system : (positive_words - negative_words / total_words ) 
+   - **Note: words can be neutral**
  - Make sense of emotions portrayed by the songs based off of audio/lyrical data
  - generate ability to generate list of songs relevant to input mood
-    - user enters mood on scale from 0-1, receives a list of songs
+   - user enters mood on scale from 0-1, receives a list of songs
  
 ## 5. Analysis
 
-### Data Collection
+### 5.1 Data Collection
 
-#### Accumulating lyrics
+#### 5.1.1 Accumulating lyrics
+
 From our data sources, we collected data for roughly 10000 of the most popular songs released between 2017 and 2020, taking account of several audio and lyrical features present in the track. We gathered this data by hand, first querying the most popular 2000 newly released songs in each year between 2017 and 2020. We then sent requests to Genius to gather lyrics for each song. Some songs, even though they were popular did not have lyrics present on Genius, these songs were excluded from our dataset. With BeautifulSOup, we extracted and cleaned up the lyrics, removing anything that is not a part of the song's lyrics like annotations left by users, section headings (Chorus, Hook, etc), and empty lines. After exclusions our data covered a little over 6000 Spotify tracks 
 
 #### Performance of sentiment analysis on lyrics
+
 With a song's lyrics in hand, we used NLTK's sentiment module, Vader, to read each line in the lyrics. NLTK Vader reads a line of text and gives a scores on positivity, negativity, neutrality, and and overall compound score. We marked lines with a compound score greater than 0.5 as positive, less than -0.1 as negative, and anything in between as neutral. We then found the percentages of positive, negative, and neutral lines in a song's composition and saved them to our data set. 
 
 We performed a brief analysis of the legibility of the Vader module in determining sentiment on four separate strings. "I'm happy" and "I'm so happy" were used to compare two positive lines, "I'm happy" was expected to have a positive compound score, but slightly less positive than "I'm so happy". Similarly, we used two negative lines "I'm sad" and the slightly more extreme, "I'm so sad" which were expected to result in negative compound scores with "I'm sad" being less negative than "I'm so sad".
 
 ```
-Scores for 'I'm happy': {'neg': 0.0, 'neu': 0.213, 'pos': 0.787, 'compound': 0.5719}
+Scores for 'I'm happy': {
+   'neg': 0.0, 
+   'neu': 0.213, 
+   'pos': 0.787, 
+   'compound': 0.5719
+}
 
 Scores for 'I'm so happy': {'neg': 0.0, 'neu': 0.334, 'pos': 0.666, 'compound': 0.6115}
 
@@ -101,6 +108,7 @@ In addition to performing sentiment analysis on the lyrics, we tokenized the lyr
 **Table 1:** Snapshot of dataset containing tracks released in 2020
 
 #### Description of select data fields
+
 The following terms defined are important in our analyses. In our data set most terms contain are represented by a  value between 0 and 1, indicating least to most. For example, looking at the first two rows in *Table 1*, we can see that the track by the artist, Pop Smoke, has a greater speechiness score, indicating a greater percentage of that song contains spoken word. 
  
 - **Danceability:** uses several musical elements (tempo, stability, beat strength, regularity) to determine how suitable a given track is for dancing
@@ -117,6 +125,7 @@ The following terms defined are important in our analyses. In our data set most 
 Out of these fields, we seek to find which audio features correlate to a song's valence and if our positivity and negativity scores of a song's lyrics provide any meaningfullness in determining a song's positivity. For the purpose of this study we mainly focus on valence, energy, danceability, positivity, and negativity.
 
 #### Preliminary Analysis of Data
+
 ![Heatmap](https://github.com/cybertraining-dsc/fa20-523-341/raw/main/project/images/all_tracks_heatmap.png)
 
 **Figure 1:** Heatmap of data with fields valence, energy, danceability, positivity, negativity
