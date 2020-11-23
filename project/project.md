@@ -1,5 +1,8 @@
 # Music Mood Classification
 
+- [ ] please implement the changes we suggested
+- [ ] fix the way the sections are organized. See the rendered TOC ... you have some sections to deep?
+
 [![Check Report](https://github.com/cybertraining-dsc/fa20-523-341/workflows/Check%20Report/badge.svg)](https://github.com/cybertraining-dsc/fa20-523-341/actions)
 [![Status](https://github.com/cybertraining-dsc/fa20-523-341/workflows/Status/badge.svg)](https://github.com/cybertraining-dsc/fa20-523-341/actions)
 Status: in progress
@@ -81,7 +84,11 @@ Scores for 'I'm happy': {
    'compound': 0.5719
 }
 
-Scores for 'I'm so happy': {'neg': 0.0, 'neu': 0.334, 'pos': 0.666, 'compound': 0.6115}
+Scores for 'I'm so happy': {
+ 'neg': 0.0, 
+ 'neu': 0.334, 
+ 'pos': 0.666, 
+ 'compound': 0.6115}
 
 Scores for 'I'm sad': {'neg': 0.756, 'neu': 0.244, 'pos': 0.0, 'compound': -0.4767}
 
