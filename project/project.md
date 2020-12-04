@@ -70,7 +70,7 @@ For the lyrical analysis portion of this project, we use Genius's API to pull ly
 
 From our data sources, we collected data for roughly 10000 of the most popular songs released between 2017 and 2020, taking account of several audio and lyrical features present in the track. We gathered this data by hand, first querying the most popular 2000 newly released songs in each year between 2017 and 2020. We then sent requests to Genius to gather lyrics for each song. Some songs, even though they were popular did not have lyrics present on Genius, these songs were excluded from our dataset. With BeautifulSOup, we extracted and cleaned up the lyrics, removing anything that is not a part of the song's lyrics like annotations left by users, section headings (Chorus, Hook, etc), and empty lines. After exclusions our data covered a little over 6000 Spotify tracks 
 
-#### Performance of sentiment analysis on lyrics
+#### 5.1.2 Performance of sentiment analysis on lyrics
 
 With a song's lyrics in hand, we used NLTK's sentiment module, Vader, to read each line in the lyrics. NLTK Vader reads a line of text and gives a scores on positivity, negativity, neutrality, and and overall compound score. We marked lines with a compound score greater than 0.5 as positive, less than -0.1 as negative, and anything in between as neutral. We then found the percentages of positive, negative, and neutral lines in a song's composition and saved them to our data set. 
 
