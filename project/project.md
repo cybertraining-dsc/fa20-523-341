@@ -80,21 +80,32 @@ We performed a brief analysis of the legibility of the Vader module in determini
 
 ```
 Scores for 'I'm happy': {
-   'neg': 0.0, 
-   'neu': 0.213, 
-   'pos': 0.787, 
-   'compound': 0.5719
+    'neg': 0.0, 
+    'neu': 0.213, 
+    'pos': 0.787, 
+    'compound': 0.5719
 }
 
 Scores for 'I'm so happy': {
- 'neg': 0.0, 
- 'neu': 0.334, 
- 'pos': 0.666, 
- 'compound': 0.6115}
+    'neg': 0.0, 
+    'neu': 0.334, 
+    'pos': 0.666, 
+    'compound': 0.6115
+}
 
-Scores for 'I'm sad': {'neg': 0.756, 'neu': 0.244, 'pos': 0.0, 'compound': -0.4767}
+Scores for 'I'm sad': {
+    'neg': 0.756, 
+    'neu': 0.244, 
+    'pos': 0.0, 
+    'compound': -0.4767
+}
 
-Scores for 'I'm so sad': {'neg': 0.629, 'neu': 0.371, 'pos': 0.0, 'compound': -0.5256}
+Scores for 'I'm so sad': {
+    'neg': 0.629, 
+    'neu': 0.371, 
+    'pos': 0.0, 
+    'compound': -0.5256
+}
 ```
 
 While these results confirmed our expectations, one issue that comes to the table is that Vader takes into consideration additional string features such as punctuation in its determination of score, meaning "I'm so sad!" will be more negative than "I'm so sad". Since lyrics on Genius are contributed by the community, in most cases there is a lack of consistency using accurate punctuation. Additionally in some cases there can be typos present in a line of lyrics, both of which can skew our data. However we determined that our method in using the Vader module is suitable for our project as we simply want to determine if a track is positive or negative without needing to be too specific.
