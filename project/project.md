@@ -126,7 +126,7 @@ In addition to performing sentiment analysis on the lyrics, we tokenized the lyr
 | 0.357        | 0.425  | 5   | -7.301   | 0.0333      | 0.584        | 0                | 0.322    | 0.27    | 102.078 | 198040      | 3              | Heather                 | Conan Gray     | 3            | 4            | 22          | 0.103448276 | 0.137931034 | 0.75862069  | 114        | 66                |
 | 0.83         | 0.585  | 0   | -6.476   | 0.094       | 0.237        | 0                | 0.248    | 0.485   | 109.978 | 173711      | 4              | 34+35                   | Ariana Grande  | 3            | 13           | 52          | 0.044117647 | 0.191176471 | 0.764705882 | 249        | 127               |
 
-### Description of select data fields
+### 5.4 Description of select data fields
 
 The following terms defined are important in our analyses. In our data set most terms contain are represented by a  value between 0 and 1, indicating least to most. For example, looking at the first two rows in *Table 1*, we can see that the track by the artist, Pop Smoke, has a greater speechiness score, indicating a greater percentage of that song contains spoken word. 
  
@@ -143,7 +143,7 @@ The following terms defined are important in our analyses. In our data set most 
 
 Out of these fields, we seek to find which audio features correlate to a song's valence and if our positivity and negativity scores of a song's lyrics provide any meaningfullness in determining a song's positivity. For the purpose of this study we mainly focus on valence, energy, danceability, positivity, and negativity.
 
-### Preliminary Analysis of Data
+### 5.5 Preliminary Analysis of Data
 
 ![Heatmap](https://github.com/cybertraining-dsc/fa20-523-341/raw/main/project/images/all_tracks_heatmap.png)
 
