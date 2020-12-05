@@ -64,15 +64,11 @@ For the lyrical analysis portion of this project, we use Genius's API to pull ly
  
 ## 5. Analysis
 
-### 5.1 Accumulation of lyrics
+### 5.1 Accumulation of audio features and lyrics
 
-From our data sources, we collected data for roughly 10000 of the most popular songs released between 2017 and 2020, taking account of several audio and lyrical features present in the track. We gathered this data by hand, first querying the most popular 2000 newly released songs in each year between 2017 and 2020. We then sent requests to Genius to gather lyrics for each song. Some songs, even though they were popular did not have lyrics present on Genius, these songs were excluded from our dataset. With BeautifulSOup, we extracted and cleaned up the lyrics, removing anything that is not a part of the song's lyrics like annotations left by users, section headings (Chorus, Hook, etc), and empty lines. After exclusions our data covered a little over 6000 Spotify tracks 
+From our data sources, we collected data for roughly 10000 of the most popular songs released between 2017 and 2020, taking account of several audio and lyrical features present in the track. We gathered this data by hand, first querying the most popular 2000 newly released songs in each year between 2017 and 2020. We then sent requests to Genius to gather lyrics for each song. Some songs, even though they were popular did not have lyrics present on Genius, these songs were excluded from our dataset. With BeautifulSoup, we extracted and cleaned up the lyrics, removing anything that is not a part of the song's lyrics like annotations left by users, section headings (Chorus, Hook, etc), and empty lines. After exclusions our data covered a little over 6000 Spotify tracks 
 
 ### 5.2 Performance of sentiment analysis on lyrics
-
-From our data sources, we collected data for roughly 10000 of the most popular songs released between 2017 and 2020, taking account of several audio and lyrical features present in the track. We gathered this data by hand, first querying the most popular 2000 newly released songs in each year between 2017 and 2020. We then sent requests to Genius to gather lyrics for each song. Some songs, even though they were popular did not have lyrics present on Genius, these songs were excluded from our dataset. With BeautifulSOup, we extracted and cleaned up the lyrics, removing anything that is not a part of the song's lyrics like annotations left by users, section headings (Chorus, Hook, etc), and empty lines. After exclusions our data covered a little over 6000 Spotify tracks 
-
-### 5.3 Performance of sentiment analysis on lyrics
 
 With a song's lyrics in hand, we used NLTK's sentiment module, Vader, to read each line in the lyrics. NLTK Vader reads a line of text and gives a scores on positivity, negativity, neutrality, and and overall compound score. We marked lines with a compound score greater than 0.5 as positive, less than -0.1 as negative, and anything in between as neutral. We then found the percentages of positive, negative, and neutral lines in a song's composition and saved them to our data set. 
 
@@ -126,7 +122,7 @@ In addition to performing sentiment analysis on the lyrics, we tokenized the lyr
 | 0.357        | 0.425  | 5   | -7.301   | 0.0333      | 0.584        | 0                | 0.322    | 0.27    | 102.078 | 198040      | 3              | Heather                 | Conan Gray     | 3            | 4            | 22          | 0.103448276 | 0.137931034 | 0.75862069  | 114        | 66                |
 | 0.83         | 0.585  | 0   | -6.476   | 0.094       | 0.237        | 0                | 0.248    | 0.485   | 109.978 | 173711      | 4              | 34+35                   | Ariana Grande  | 3            | 13           | 52          | 0.044117647 | 0.191176471 | 0.764705882 | 249        | 127               |
 
-### 5.4 Description of select data fields
+### 5.3 Description of select data fields
 
 The following terms defined are important in our analyses. In our data set most terms contain are represented by a  value between 0 and 1, indicating least to most. For example, looking at the first two rows in *Table 1*, we can see that the track by the artist, Pop Smoke, has a greater speechiness score, indicating a greater percentage of that song contains spoken word. 
  
@@ -143,13 +139,17 @@ The following terms defined are important in our analyses. In our data set most 
 
 Out of these fields, we seek to find which audio features correlate to a song's valence and if our positivity and negativity scores of a song's lyrics provide any meaningfullness in determining a song's positivity. For the purpose of this study we mainly focus on valence, energy, danceability, positivity, and negativity.
 
-### 5.5 Preliminary Analysis of Data
+### 5.4 Preliminary Analysis of Data
 
 ![Heatmap](https://github.com/cybertraining-dsc/fa20-523-341/raw/main/project/images/all_tracks_heatmap.png)
 
 **Figure 1:** Heatmap of data with fields valence, energy, danceability, positivity, negativity
 
 Referring to *Figure 1*, we find that track lyrics tend to be more negative than positive. However for the most part, even with tracks with negative lyrics, the valence, or overall happiness of the audio features hovers around 0.5; indicating that most songs tend to have neutral audio features. Looking at tracks with lyrics that are highly positive we find that the valence rises to about 0.7 to 0.8 and that songs with extremely high negatively also cause the valence to drop to the 0.3 range. These observations indicate that only extremes in lyrical sentiment correlate significantly in a song's valence, as some songs with negative lyrics may also be fast-tempo and energetic, keeping the valence relatively high compared to lyrical composition. This is shown in our visualization, where both tracks with positive and negative lyricals have high energy and danceability values, indicating fast-tempos and high-pitches.
+
+### 5.5 Scatterplot Analysis
+
+![Audio_Features_Scatterplots](https://github.com/cybertraining-dsc/fa20-523-341/raw/main/project/images/audio_features_scatterplot.png)
 
 ## 6. Conclusion
 
