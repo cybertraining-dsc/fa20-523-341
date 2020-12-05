@@ -44,9 +44,9 @@ where a is the probability weight given by the lyrical classifier [^1].
 
 ## 3. Datasets
 
-For the audio content analysis portion of this project, we use Spotify's Web API, which provides a great amount audio data for every song in Spotify's song collection, including valence, energy, and danceability.
+For the audio content analysis portion of this project, we use Spotify's Web API, which provides a great amount audio data for every song in Spotify's song collection, including valence, energy, and danceability [^7].
 
-For the lyrical analysis portion of this project, we use Genius's API to pull lyrics information for a song. Genius is a website which contains lyrics to several popular songs. We will then use WordNet, which is large collection of English lexicon, used to classify words and phrases with features such as valence, arousal, dominance.
+For the lyrical analysis portion of this project, we use Genius's API to pull lyrics information for a song. Genius is a website which contains lyrics to several popular songs [^8]. To perform sentiment analysis on a set of lyrics collected from Genius, we use the NLTK Vader library.
 
 
 ## 4. Project Goals 
@@ -66,11 +66,11 @@ For the lyrical analysis portion of this project, we use Genius's API to pull ly
 
 ### 5.1 Accumulation of audio features and lyrics
 
-From our data sources, we collected data for roughly 10000 of the most popular songs released between 2017 and 2020, taking account of several audio and lyrical features present in the track. We gathered this data by hand, first querying the most popular 2000 newly released songs in each year between 2017 and 2020. We then sent requests to Genius to gather lyrics for each song. Some songs, even though they were popular did not have lyrics present on Genius, these songs were excluded from our dataset. With BeautifulSoup, we extracted and cleaned up the lyrics, removing anything that is not a part of the song's lyrics like annotations left by users, section headings (Chorus, Hook, etc), and empty lines. After exclusions our data covered a little over 6000 Spotify tracks 
+From our data sources, we collected data for roughly 10000 of the most popular songs released between 2017 and 2020, taking account of several audio and lyrical features present in the track. We gathered this data by hand, first querying the most popular 2000 newly released songs in each year between 2017 and 2020. We then sent requests to Genius to gather lyrics for each song. Some songs, even though they were popular did not have lyrics present on Genius, these songs were excluded from our dataset. With BeautifulSoup, we extracted and cleaned up the lyrics, removing anything that is not a part of the song's lyrics like annotations left by users, section headings (Chorus, Hook, etc), and empty lines. After exclusions our data covered a little over 6000 Spotify tracks.
 
 ### 5.2 Performance of sentiment analysis on lyrics
 
-With a song's lyrics in hand, we used NLTK's sentiment module, Vader, to read each line in the lyrics. NLTK Vader reads a line of text and gives a scores on positivity, negativity, neutrality, and and overall compound score. We marked lines with a compound score greater than 0.5 as positive, less than -0.1 as negative, and anything in between as neutral. We then found the percentages of positive, negative, and neutral lines in a song's composition and saved them to our data set. 
+With a song's lyrics in hand, we used NLTK's sentiment module, Vader, to read each line in the lyrics. NLTK Vader reads a line of text and assigns it scores of positivity, negativity, neutrality, and and overall compound score. We marked lines with a compound score greater than 0.5 as positive, less than -0.1 as negative, and anything in between as neutral. We then found the percentages of positive, negative, and neutral lines in a song's composition and saved them to our data set. 
 
 We performed a brief analysis of the legibility of the Vader module in determining sentiment on four separate strings. "I'm happy" and "I'm so happy" were used to compare two positive lines, "I'm happy" was expected to have a positive compound score, but slightly less positive than "I'm so happy". Similarly, we used two negative lines "I'm sad" and the slightly more extreme, "I'm so sad" which were expected to result in negative compound scores with "I'm sad" being less negative than "I'm so sad".
 
@@ -104,7 +104,7 @@ Scores for 'I'm so sad': {
 }
 ```
 
-While these results confirmed our expectations, one issue that comes to the table is that Vader takes into consideration additional string features such as punctuation in its determination of score, meaning "I'm so sad!" will be more negative than "I'm so sad". Since lyrics on Genius are contributed by the community, in most cases there is a lack of consistency using accurate punctuation. Additionally in some cases there can be typos present in a line of lyrics, both of which can skew our data. However we determined that our method in using the Vader module is suitable for our project as we simply want to determine if a track is positive or negative without needing to be too specific.
+While these results confirmed our expectations, a few issues come to the table with our use of the Vader module. One is that Vader takes into consideration additional string features such as punctuation in its determination of score, meaning "I'm so sad!" will be more negative than "I'm so sad". Since lyrics on Genius are contributed by the community, in most cases there is a lack of consistency using accurate punctuation. Additionally, in some cases there can be typos present in a line of lyrics, both of which can skew our data. However we determined that our method in using the Vader module is suitable for our project as we simply want to determine if a track is positive or negative without needing to be too specific. Another issue is that our implementation of Vader acts only on English words. Again, since lyrics on Genius are contributed by the community, there could be errors in our data from misspelled word contributions as well as sections or entire lyrics written in different languages.
 
 In addition to performing sentiment analysis on the lyrics, we tokenized the lyrics, removing common words such as 'a', 'the','for', etc. This was done to collect data on the number of meaningful and number of non-repeating words in each song. Albeit while this data was never used in our study, it could prove useful in future studies.
 
@@ -128,16 +128,13 @@ The following terms defined are important in our analyses. In our data set most 
  
 - **Danceability:** uses several musical elements (tempo, stability, beat strength, regularity) to determine how suitable a given track is for dancing
 - **Energy:**  measures intensity of a song
-- **Loudness:** average loudness (in decibels) of a track
-- **Mode:** indicates whether track uses major(0) or minor (1) scale
 - **Speechiness:** identifies how much of a track contains spoken word
-- **Instrumentalness:** confidence value on a track having no vocal content
 - **Valence:** predicts the overall happiness, or positivity of a track based on its musical features
-- **Tempo:** average tempo of a track
 - **Positivity** percentage of lines in a song's lyrics determined to have a positive sentiment score
 - **Negativity** percentage of lines in a song's lyrics determined to have a negative sentiment score
+- **Neutrality** percentage of lines in a song's lyrics determined to have a neutral sentiment score
 
-Out of these fields, we seek to find which audio features correlate to a song's valence and if our positivity and negativity scores of a song's lyrics provide any meaningfullness in determining a song's positivity. For the purpose of this study we mainly focus on valence, energy, danceability, positivity, and negativity.
+Out of these fields, we seek to find which audio features correlate to a song's valence and if our positivity and negativity scores of a song's lyrics provide any meaningfulness in determining a song's positivity. For the purpose of this study we mainly focus on valence, energy, danceability, positivity, and negativity.
 
 ### 5.4 Preliminary Analysis of Data
 
@@ -156,6 +153,8 @@ Referring to *Figure 1*, we find that track lyrics tend to be more negative than
 *Figure 2* describes the relation of several data fields we collected to a song's valence, or its overall positivity. We find that the positivity and negativity plots reflect that of the speechiness plot in that there seems to be little correlation between the x and y axes. On the other hand neutrality seems to show a positive correlation between a song's lyrical content and its respective valence. If a song is more neutral, it seems more likely to be positive. 
 
 ![Audio_Features_Scatterplots](https://github.com/cybertraining-dsc/fa20-523-341/raw/main/project/images/spotify_distributions.png)
+
+**Figure 2:** Distributions of field values across the Spotify music library [^7]
 
 ## 6. Conclusion
 
@@ -178,3 +177,5 @@ This section will be expanded upon after completion of analyses
 [^6]: Lamere, P. (2016, August 6). Organize Your Music. Retrieved November 17, 2020, from http://organizeyourmusic.playlistmachinery.com/
 
 [^7]: Get Audio Features for a Track. (2020). Retrieved November 17, 2020, from https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/
+
+[^8]: Genius API Documentation. (2020). Retrieved November 17, 2020, from https://docs.genius.com/
