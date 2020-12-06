@@ -150,11 +150,13 @@ Referring to *Figure 1*, we find that track lyrics tend to be more negative than
 
 **Figure 2:** Scatterplots showing relation of features danceability, energy, speechiness, positivity, negativity, and neutrality to valence.
 
-*Figure 2* describes the relation of several data fields we collected to a song's valence, or its overall positivity. We find that the positivity and negativity plots reflect that of the speechiness plot in that there seems to be little correlation between the x and y axes. On the other hand neutrality seems to show a positive correlation between a song's lyrical content and its respective valence. If a song is more neutral, it seems more likely to be positive. 
+*Figure 2* describes the relation of several data fields we collected to a song's valence, or its overall positivity. We find that the positivity and negativity plots reflect that of the speechiness plot in that there seems to be little correlation between the x and y axes. On the other hand neutrality seems to show a positive correlation between a song's lyrical content and its respective valence. If a song is more neutral, it seems more likely to have a higher valence. 
 
 ![Audio_Features_Scatterplots](https://github.com/cybertraining-dsc/fa20-523-341/raw/main/project/images/spotify_distributions.png)
 
 **Figure 2:** Distributions of field values across the Spotify music library [^7]
+
+### 5.6 Linear Regression Analysis
 
 ## 6. Conclusion
 
