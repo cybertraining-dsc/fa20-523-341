@@ -13,12 +13,13 @@ from nltk.corpus import stopwords  # used to remove common words like 'the, at, 
 nltk.download('vader_lexicon')
 nltk.download('stopwords')
 
+genius_token = "XXXXXXXXXXXXXXXXXXXX"
 
 # search for a song on genius with song title and artist name, returns url to lyrics page for the song
 def get_genius_url(title, artist):
     genius = 'https://api.genius.com/search'
     data = {'q': title + ' ' + artist}
-    headers = {'Authorization': 'Bearer ' + 'O-txEXzcRqwinpQX3P5AMzLRka8sq1HwBfZFBlSGCdaDZa14P4uXyeSKbgTCvARM'}
+    headers = {'Authorization': 'Bearer ' + genius_token}
     response = requests.get(genius, data=data, headers=headers)
     song_url = ''
     for hit in response.json()['response']['hits']:
@@ -150,8 +151,8 @@ def get_track_data(offset):
 
 
 # API Tokens
-clientID = '688f828e787d49768560dc3b01ad1527'
-clientSecret = '1c92d4cff46546558e68bacdcb17a029'
+clientID = 'XXXXXXXXXXXXXXXXXXXX'
+clientSecret = 'XXXXXXXXXXXXXXXXXXXX'
 
 credentialsManager = SpotifyClientCredentials(client_id=clientID, client_secret=clientSecret)
 sp = spotipy.Spotify(client_credentials_manager=credentialsManager)
