@@ -5,7 +5,7 @@
 
 [![Check Report](https://github.com/cybertraining-dsc/fa20-523-341/workflows/Check%20Report/badge.svg)](https://github.com/cybertraining-dsc/fa20-523-341/actions)
 [![Status](https://github.com/cybertraining-dsc/fa20-523-341/workflows/Status/badge.svg)](https://github.com/cybertraining-dsc/fa20-523-341/actions)
-Status: in progress
+Status: final
 
 Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/master/project/project.md)
 
@@ -91,7 +91,7 @@ While these results confirmed our expectations, a few issues come to the table w
 
 In addition to performing sentiment analysis on the lyrics, we tokenized the lyrics, removing common words such as 'a', 'the','for', etc. This was done to collect data on the number of meaningful and number of non-repeating words in each song. Albeit while this data was never used in our study, it could prove useful in future studies.
 
-*Table 1* displays a snapshot of the data we collected from seven tracks released in 2020. The dataset contains 27 fields, 12 of which describe the audio features of a track, and 8 of which describe the lyrics of the track.
+*Table 1* displays a snapshot of the data we collected from seven tracks released in 2020. The dataset contains 27 fields, 12 of which describe the audio features of a track, and 8 of which describe the lyrics of the track. For the purpose of this study we exclude the use of audio features key, duration, and time signature.
 
 **Table 1:** Snapshot of dataset containing tracks released in 2020
 
@@ -113,21 +113,26 @@ The following terms defined are important in our analyses. In our data set most 
 - **Energy:**  measures intensity of a song
 - **Loudness:** a songs overall loudness measured in decibels
 - **Speechiness:** identifies how much of a track contains spoken word
-- **Acousticness** 
+- **Acousticness:** confidence of a track being acoustic, or with physical instruments
+- **Instrumentalness:** confidence of a track having no vocals
+- **Liveness:** confidence of a track being a live recording
 - **Valence:** predicts the overall happiness, or positivity of a track based on its musical features
-- **Positivity** percentage of lines in a song's lyrics determined to have a positive sentiment score
-- **Negativity** percentage of lines in a song's lyrics determined to have a negative sentiment score
-- **Neutrality** percentage of lines in a song's lyrics determined to have a neutral sentiment score
+- **Tempo:** the average beats per minute of a track
+- **Positivity:** percentage of lines in a track's lyrics determined to have a positive sentiment score
+- **Negativity:** percentage of lines in a track's lyrics determined to have a negative sentiment score
+- **Neutrality:** percentage of lines in a track's lyrics determined to have a neutral sentiment score
 
 Out of these fields, we seek to find which audio features correlate to a song's valence and if our positivity and negativity scores of a song's lyrics provide any meaningfulness in determining a song's positivity. For the purpose of this study we mainly focus on valence, energy, danceability, positivity, and negativity.
 
 ### 4.4 Preliminary Analysis of Data
 
+When calculating averages of the feature fields captured in our dataset, we found it interesting that based on our lyrical interpretation, tracks between 2017 and 2020 tended to be more negative than positive. The average negativity score for a track in our dataset was 0.21 which means 21% of the lines in the track were deemed to have negative connotation, while having a 0.08 positivity score.
+
 ![Heatmap](https://github.com/cybertraining-dsc/fa20-523-341/raw/main/project/images/all_tracks_heatmap.png)
 
 **Figure 1:** Heatmap of data with fields valence, energy, danceability, positivity, negativity
 
-Referring to *Figure 1*, we find that track lyrics tend to be more negative than positive. However for the most part, even with tracks with negative lyrics, the valence, or overall happiness of the audio features hovers around 0.5; indicating that most songs tend to have neutral audio features. Looking at tracks with lyrics that are highly positive we find that the valence rises to about 0.7 to 0.8 and that songs with extremely high negatively also cause the valence to drop to the 0.3 range. These observations indicate that only extremes in lyrical sentiment correlate significantly in a song's valence, as some songs with negative lyrics may also be fast-tempo and energetic, keeping the valence relatively high compared to lyrical composition. This is shown in our visualization, where both tracks with positive and negative lyricals have high energy and danceability values, indicating fast-tempos and high-pitches.
+Backed by *Figure 1*, we find that track lyrics tend to be more negative than positive. However for the most part, even with tracks with negative lyrics, the valence, or overall happiness of the audio features hovers around 0.5; indicating that most songs tend to have neutral audio features. Looking at tracks with lyrics that are highly positive we find that the valence rises to about 0.7 to 0.8 and that songs with extremely high negatively also cause the valence to drop to the 0.3 range. These observations indicate that only extremes in lyrical sentiment correlate significantly in a song's valence, as some songs with negative lyrics may also be fast-tempo and energetic, keeping the valence relatively high compared to lyrical composition. This is shown in our visualization, where both tracks with positive and negative lyricals have high energy and danceability values, indicating fast-tempos and high-pitches.
 
 ### 4.5 Scatterplot Analysis
 
