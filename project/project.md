@@ -208,7 +208,11 @@ We received inconclusive results from our study. The linear and polynomial regre
 
 There are several other elements of this study that could be improved upon in future iterations. In this project we only worked with songs released after the beginning of 2017, but obviously, people would still enjoy listening to songs from previous years. The Spotiy API contains audio features data for every song in its library, so it would be worth collecting that data on every song for usage in the generation of song recommendations. Secondly, our data set excluded songs on Spotify, whose lyrics could not be found easily on Genius.com. We should have handled these cases by attempting to find the lyrics from other popular websites which store music lyrics. And lastly, we worked with a very small dataset relative to the total amount of songs that exist, or that are available on Spotify. There is great possibility in repeating this study quite easily with a greater selection of songs. We were surprised by how small the file sizes were of our dataset of 6551 songs, the aggregated data set being only 2.3 megabytes in size. Using that value, a set of one million songs can be estimated to only be around 350 megabytes. 
 
-## 7. References
+## 7. Acknowledgements
+
+We would like to give our thanks to Dr. Geoffrey Fox, Dr. Gregor von Laszewski, and the other associate instructors who taught FA20-BL-ENGR-E534-11530: Big Data Applications during the Fall 2020 semester at Indiana University, Bloomington for their suggestions and assistance in compiling this project report. Additionally we would like to thank the students who contributed to Piazza by either answering questions that we had ourselves, or giving their own suggestions and experiences in building projects. In taking this course we learned of several applications of and use cases for big data applications, and gained the knowledge to build our own big data projects.
+
+## 8. References
 
 [^1]: Hu, X., &amp; Downie, J. S. (2010). Improving mood classification in music digital libraries by combining lyrics and audio. Proceedings of the 10th Annual Joint Conference on Digital Libraries - JCDL '10. doi:10.1145/1816123.1816146
 
