@@ -1,8 +1,5 @@
 # Music Mood Classification
 
-- [ ] please implement the changes we suggested
-- [ ] fix the way the sections are organized. See the rendered TOC ... you have some sections to deep?
-
 [![Check Report](https://github.com/cybertraining-dsc/fa20-523-341/workflows/Check%20Report/badge.svg)](https://github.com/cybertraining-dsc/fa20-523-341/actions)
 [![Status](https://github.com/cybertraining-dsc/fa20-523-341/workflows/Status/badge.svg)](https://github.com/cybertraining-dsc/fa20-523-341/actions)
 Status: final
