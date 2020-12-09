@@ -4,7 +4,7 @@
 [![Status](https://github.com/cybertraining-dsc/fa20-523-341/workflows/Status/badge.svg)](https://github.com/cybertraining-dsc/fa20-523-341/actions)
 Status: final, Type: Project
 
-Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-312/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/master/project/project.md)
+Kunaal Shah, [fa20-523-341](https://github.com/cybertraining-dsc/fa20-523-341/), [Edit](https://github.com/cybertraining-dsc/fa20-523-341/blob/master/project/project.md)
 
 {{% pageinfo %}}
 
