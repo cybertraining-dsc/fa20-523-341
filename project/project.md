@@ -5,6 +5,7 @@ linkTitle: Music Classification
 tags: ["project", "ai", ""]
 description: Music analysis on an individual level is incredibly subjective. A particular song can leave polarizing impressions on the emotions of its listener. One person may find a sense of calm in a piece, while another feels energy. In this study we examine the audio and lyrical features of popular songs in order to find relationships in a song's lyrics, audio features, and its valence. We take advantage of the audio data provided by Spotify for each song in their massive library, as well as lyrical data from popular music news and lyrics site, Genius. 
 author: Kunaal Shah
+github_url: https://github.com/cybertraining-dsc/fa20-523-341/edit/main/project/project.md
 resources:
 - src: "**.{png,jpg}"
   title: "Image #:counter"
